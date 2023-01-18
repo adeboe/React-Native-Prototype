@@ -7,7 +7,7 @@
 # old prototype as a reference for this one.
 # 
 # @author   Allan DeBoe
-# @date     January 15th, 2023
+# @date     January 17th, 2023
 #
 ###############################################################################
 
@@ -35,7 +35,7 @@ class UserView(APIView):
             'username': obj.username,
             'account_creation_date': obj.account_creation_date,
             'profile_description': obj.profile_description,
-        } for obj in React.objects.all()]
+        } for obj in User.objects.all()]
 
         # returns all of the users
         return Response(data)
@@ -49,3 +49,10 @@ class UserView(APIView):
         if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data)
+
+    # Handles DELETE requests. In this case, it deletes everything
+    # in the database (not a good idea in main project, but this is
+    # a prototype so it is not going to be used seriously).
+    def delete(self, request):
+        count = User.objects.all().delete()
+        return JsonResponse({'message': 'the data was successfully deleted'})

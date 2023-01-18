@@ -1,3 +1,13 @@
+###############################################################################
+# "settings.py"
+#
+# This handles the settings of the Django back-end
+# 
+# @author   Allan DeBoe
+# @date     January 17th, 2023
+#
+###############################################################################
+
 """
 Django settings for prototype project.
 
@@ -37,6 +47,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'rest_framework',               # for djangorestframework
+    'prototype',                    # for the prototype
+    'corsheaders',                  # for django-cors-headers
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -47,6 +62,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'corsheaders.middleware.CorsMiddleware',                    # for django-cors-headers
 ]
 
 ROOT_URLCONF = 'prototype.urls'
@@ -121,3 +138,15 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+################################################################################
+
+# Loosens restrictions on the REST framework
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSIONS_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ]
+}
+
+# Loosens restrictions on Cross-Origin Resource Sharing.
+CORS_ORIGIN_ALLOW_ALL = True

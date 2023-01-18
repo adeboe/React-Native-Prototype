@@ -4,7 +4,7 @@
 # This handles what url paths go to what views.
 # 
 # @author   Allan DeBoe
-# @date     January 13th, 2023
+# @date     January 17th, 2023
 #
 ###############################################################################
 
@@ -25,8 +25,13 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
+
+from users.views import *
+
+###############################################################################
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('users/', UserView.as_view(), name="User Database")
 ]

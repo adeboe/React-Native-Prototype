@@ -6,11 +6,38 @@ This project is also meant to be a reference for my team for the semester if the
 ## How to Install (Windows 10)
 First, install *Python* (at least version 3.10.7) and *Node Package Manager* (a.k.a. `npm`).
 
-Then, open the terminal and run the following commands (ignore the `> `):
+Finally, download the repo.
+
+## How to Run (Windows 10)
+
+### Back-end (Django)
+Open the command line in the directory `./prototype-back-end/virt-env/Scripts` and run the following command
+
 ```
-> pip install django
-> pip install djangorestframework
-> pip install django-cors-headers
+> activate.bat
 ```
 
-Finally, download the repo.
+This should take you into the virtual environment, which should have everything you need in terms of running the
+back-end.
+
+Then, you run the following commands:
+```
+> cd ../../prototype
+> py manage.py runserver
+```
+
+You know if you done it correctly if you get the following lines at the bottom
+```
+Django version 4.1.5, using settings 'prototype.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+```
+
+You can then access the Django REST framework for the User database through `http://127.0.0.1:8000/users/`
+
+If you then want to shut it down, press `CTRL-C` to stop the server and run the following commands to exit
+out of the virtual environment:
+```
+> cd ../virt-env/Scripts
+> deactivate.bat
+```
