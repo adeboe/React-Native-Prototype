@@ -22,8 +22,7 @@ Open the command line in the directory `./prototype-back-end/virt-env/Scripts` a
 > activate.bat
 ```
 
-This should take you into the virtual environment, which should have everything you need in terms of running the
-back-end.
+This should take you into the virtual environment, which should have everything you need in terms of running the back-end.
 
 Then, you run the following commands:
 ```
@@ -40,8 +39,19 @@ Quit the server with CTRL-BREAK.
 
 You can then access the Django REST framework for the User database through `http://127.0.0.1:8000/users/`
 
-If you then want to shut it down, press `CTRL-C` to stop the server and run the following commands to exit
-out of the virtual environment:
+If you then want to shut it down, press `CTRL-C` to stop the server and run the following commands to exit out of the virtual environment:
 ```
 > cd ../virt-env/Scripts
 > deactivate.bat
+```
+
+### Front-end (React Native)
+Open the command line in the directory `./prototype-front-end/prototype` and run the following command
+
+```
+> yarn start
+```
+
+If things are working correctly, you should see a QR code appear in the command line, which will allow one to test the app on their phone, as well as some commands for testing. However, for it to work properly on the phone, you need have access to the back-end server, which requires the front-end to be able to communicate with the back-end server on the computer, which isn't possible unless if the back-end is running on a remote server computer like AWS.
+
+However, if you run the back-end beforehand (see section *Back-end (Django)*), then you can test the app on the web by pressing `w` on the terminal, which will open the web-app version.

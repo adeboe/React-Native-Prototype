@@ -14,7 +14,7 @@ module.exports = (async () => {
 	
 	const {
 		resolver: { sourceExts }
-	} = await getDefaultConfig();
+	} = await getDefaultConfig(__dirname);
 	
 	return {
 		
