@@ -4,25 +4,28 @@
   "main": "index.js",
   "scripts": {
     "start": "expo start --dev-client",
-    "android": "expo run:android",
-    "ios": "expo run:ios",
-    "web": "expo start --web"
+	"eject": "expo eject",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+	"test": "jest"
   },
   "dependencies": {
-    "@expo/webpack-config": "^0.17.2",
+    "@expo/webpack-config": "0.17.2",
     "expo": "~47.0.12",
     "expo-splash-screen": "~0.17.5",
     "expo-status-bar": "~1.4.2",
     "react": "18.1.0",
-    "react-dom": "18.1.0",
+    "react-dom": "^18.2.0",
     "react-native": "0.70.5",
-    "react-native-web": "~0.18.9"
+    "react-native-web": "npm:@gravitylabs/react-native-web"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "babel-plugin-react-native-classname-to-style": "^1.2.2",
     "babel-plugin-react-native-platform-specific-extensions": "^1.1.1",
-    "react-native-css-transformer": "^1.2.4"
+    "react-native-css-transformer": "^1.2.4",
+    "react-native-paper": "^5.1.4"
   },
   "private": true
 }

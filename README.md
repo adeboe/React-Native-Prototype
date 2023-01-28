@@ -4,14 +4,24 @@ This is meant to be a small project to demonstrate the knowledge I learned regar
 This project is also meant to be a reference for my team for the semester if the team decides to go for React Native, as we might plan on using React Native to make it easier to create a mobile version of the existing web app, making it easier for the homeless to access the web-app in a more mobile-friendly way.
 
 ## How to Install (Windows 10)
-First, install *Python* (at least version 3.10.7) and *Node Package Manager* (a.k.a. `npm`).
+First, install *Python* (at least version 3.10.7), *Node Package Manager* (a.k.a. `npm`), and *Android Studio* (for emulating Android).
 
 Then, use `npm` to install `yarn` globally by using the following command:
 ```
-npm install --global yarn
+> npm install --global yarn
 ```
 
-Finally, download the repo.
+After that, download the repo.
+
+Then, under `[PROJECT DIR]/prototype-front-end/prototype` run the following commands to ensure everything is in there:
+
+```
+> yarn add babel-plugin-react-native-classname-to-style babel-plugin-react-native-platform-specific-extensions react-native-css-transformer react-native-paper --dev
+> yarn add react-native-web@npm:@gravitylabs/react-native-web
+```
+
+### Note
+The project `@gravitylabs/react-native-web` is used instead of the official `react-native-web` is because `react-native-web` removed the ability to stylize components using class names (which is needed for the *React Native CSS Modules* to work as intended when it comes to the web version). You can see the project on https://github.com/0xGravityLabs/react-native-web
 
 ## How to Run (Windows 10)
 

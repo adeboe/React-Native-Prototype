@@ -4,3 +4,4 @@ This folder contains everything related to the Django back-end, which is made to
 # Navigation
 
 - `virt-env`: This is the Python virtual environment, which is used to run the back-end.
+- `prototype`: The Django Back-end
