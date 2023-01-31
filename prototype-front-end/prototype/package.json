@@ -4,11 +4,11 @@
   "main": "index.js",
   "scripts": {
     "start": "expo start --dev-client",
-	"eject": "expo eject",
+    "eject": "expo eject",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web",
-	"test": "jest"
+    "web": "webpack-dev-server --mode=development",
+    "test": "jest"
   },
   "dependencies": {
     "@expo/webpack-config": "0.17.2",
@@ -16,16 +16,27 @@
     "expo-splash-screen": "~0.17.5",
     "expo-status-bar": "~1.4.2",
     "react": "18.1.0",
-    "react-dom": "^18.2.0",
+    "react-art": "^18.2.0",
+    "react-dom": "18.1.0",
     "react-native": "0.70.5",
-    "react-native-web": "npm:@gravitylabs/react-native-web"
+    "react-native-web": "^0.18.12"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
+    "@babel/preset-env": "^7.20.2",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-loader": "^9.1.2",
     "babel-plugin-react-native-classname-to-style": "^1.2.2",
     "babel-plugin-react-native-platform-specific-extensions": "^1.1.1",
+    "babel-preset-react": "7.0.0-beta.3",
+    "css-loader": "^6.7.3",
+    "react-hot-loader": "^4.13.1",
     "react-native-css-transformer": "^1.2.4",
-    "react-native-paper": "^5.1.4"
+    "react-native-paper": "^5.1.4",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.11.1"
   },
   "private": true
 }

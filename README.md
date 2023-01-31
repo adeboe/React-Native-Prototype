@@ -17,7 +17,9 @@ Then, under `[PROJECT DIR]/prototype-front-end/prototype` run the following comm
 
 ```
 > yarn add babel-plugin-react-native-classname-to-style babel-plugin-react-native-platform-specific-extensions react-native-css-transformer react-native-paper --dev
+> yarn add babel-loader babel-core@7.0.0-bridge.0 @babel/preset-env babel-preset-react@7.0.0-beta.3 webpack webpack-cli css-loader react-hot-loader style-loader webpack-dev-server --dev
 > yarn add react-native-web@npm:@gravitylabs/react-native-web
+> yarn add react-art react-dom --save
 ```
 
 ### Note
