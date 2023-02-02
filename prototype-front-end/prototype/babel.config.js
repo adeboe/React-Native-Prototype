@@ -4,7 +4,7 @@
  * Configuration for "babel"
  *
  * @author Allan DeBoe
- * @date January 27th, 2023
+ * @date February 1st, 2023
  */
  
 module.exports = function(api) {

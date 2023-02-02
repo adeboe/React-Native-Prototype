@@ -7,9 +7,10 @@
  * https://github.com/kristerkari/react-native-css-modules/blob/master/docs/web-compatibility.md
  *
  * @author Allan DeBoe
- * @date January 30th, 2023
+ * @date February 1st, 2023
  */
 const webpack = require("webpack");
+const path = require("path");
 
 module.exports = {
 	mode: "development",
@@ -35,7 +36,11 @@ module.exports = {
 							"react",
 							"module:metro-react-native-babel-preset",
 						],
-						plugins: ["react-hot-loader/babel"],
+						plugins: [
+							"react-hot-loader/babel",
+							['@babel/plugin-proposal-private-property-in-object', { loose: true }],
+							['@babel/plugin-proposal-private-methods', { loose: true }],
+						],
 					},
 				},
             },
@@ -64,4 +69,9 @@ module.exports = {
         extensions: [".web.js", ".js", ".web.jsx", ".jsx"],
         mainFields: ["browser", "main"],
     },
+	devServer: {
+		historyApiFallback: {
+			index: './index.html'
+		}
+	}
 };
