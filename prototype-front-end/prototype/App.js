@@ -12,7 +12,25 @@ import { StyleSheet, Text, View } from 'react-native';
 
 // The React native app uses CSS modules to stylize
 // components to make it easier to integrate 
-import styles from './App.module.css';
+import style from './App.module.css';
+
+let styles = {};
+switch (style.constructor.name) {
+	
+	case 'CSS2Properties':
+		Object.values(style).forEach((property) => {
+			styles[property] = style[property];
+		});
+		break;
+	
+	case 'CSSStyleDeclaration':
+		styles = style;
+		break;
+	
+	default:
+		console.error(`oopsee!: ${style.constructor.name}`);
+		break;
+}
 
 export default function App() {
 	return (

@@ -7,19 +7,31 @@
  * https://github.com/kristerkari/react-native-css-modules/blob/master/docs/web-compatibility.md
  *
  * @author Allan DeBoe
- * @date February 1st, 2023
+ * @date February 2nd, 2023
  */
 const webpack = require("webpack");
+const htmlWebpackPlugin = require('html-webpack-plugin'); // FINALLY!!!!
 const path = require("path");
 
 module.exports = {
 	mode: "development",
     entry: ["react-hot-loader/patch", "./index.web.js"],
     plugins: [
+		new htmlWebpackPlugin({ template: './index.html' }),
         new webpack.HotModuleReplacementPlugin(),
     ],
 	optimization: {
 		moduleIds: 'named'
+	},
+	output: {
+		path: path.resolve(__dirname, 'dist'),
+		filename: "./index.web.js",
+		publicPath: '/'
+	},
+	devServer: {
+		historyApiFallback: {
+			index: './index.html'
+		}
 	},
     module: {
         rules: [
@@ -68,10 +80,5 @@ module.exports = {
         },
         extensions: [".web.js", ".js", ".web.jsx", ".jsx"],
         mainFields: ["browser", "main"],
-    },
-	devServer: {
-		historyApiFallback: {
-			index: './index.html'
-		}
-	}
+    }
 };
