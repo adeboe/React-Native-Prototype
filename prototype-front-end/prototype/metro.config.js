@@ -4,7 +4,7 @@
  * Configuration for "metro"
  *
  * @author Allan DeBoe
- * @date January 27th, 2023
+ * @date February 7th, 2023
  */
 
 // Learn more https://docs.expo.io/guides/customizing-metro
@@ -14,15 +14,15 @@ module.exports = (async () => {
 	
 	const {
 		resolver: { sourceExts }
-	} = await getDefaultConfig(__dirname);
+	} = await getDefaultConfig();
 	
 	return {
 		transformer: {
-			babelTransformerPath: require.resolve("react-native-css-transformer")
+			babelTransformerPath: require.resolve("react-native-css-transformer"),
 		},
 		resolver: {
-			sourceExts: [...sourceExts, "css"]
-		}
+			sourceExts: [...sourceExts, "css"],
+		},
 	};
 	
 })();

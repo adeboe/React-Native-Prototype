@@ -7,7 +7,7 @@
  * https://github.com/kristerkari/react-native-css-modules/blob/master/docs/web-compatibility.md
  *
  * @author Allan DeBoe
- * @date February 2nd, 2023
+ * @date February 7th, 2023
  */
 const webpack = require("webpack");
 const htmlWebpackPlugin = require('html-webpack-plugin'); // FINALLY!!!!
@@ -76,7 +76,9 @@ module.exports = {
     },
     resolve: {
         alias: {
-            "react-native": "react-native-web",
+			"react": path.join(__dirname, "node_modules/react"),
+            "react-native": path.join(__dirname, "node_modules/react-native-web"),
+			"react-native-web": path.join(__dirname, "node_modules/react-native-web"),
         },
         extensions: [".web.js", ".js", ".web.jsx", ".jsx"],
         mainFields: ["browser", "main"],

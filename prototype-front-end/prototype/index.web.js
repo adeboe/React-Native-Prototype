@@ -7,13 +7,13 @@
  * https://github.com/kristerkari/react-native-css-modules/blob/master/docs/web-compatibility.md
  *
  * @author Allan DeBoe
- * @date January 30th, 2023
+ * @date February 7th, 2023
  */
 import { AppRegistry } from "react-native";
 import App from "./App";
 
-AppRegistry.registerComponent("AwesomeProject", () => App);
-AppRegistry.runApplication("AwesomeProject", { rootTag: document.getElementById("react-app") });
+AppRegistry.registerComponent("ReactNativeProject", () => App);
+AppRegistry.runApplication("ReactNativeProject", { rootTag: document.getElementById("react-app") });
 
 if (module.hot) {
 	module.hot.accept();

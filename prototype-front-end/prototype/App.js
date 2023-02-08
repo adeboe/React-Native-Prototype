@@ -4,7 +4,7 @@
  * Entry point for the React Native application
  *
  * @author Allan DeBoe
- * @date January 27th, 2023
+ * @date February 7th, 2023
  */
 
 import React from 'react';
@@ -28,7 +28,10 @@ switch (style.constructor.name) {
 		break;
 	
 	default:
-		console.error(`oopsee!: ${style.constructor.name}`);
+		console.error(`oopsee!: ${JSON.stringify(style)}`);
+		Object.values(style).forEach((property) => {
+			styles[property] = style[property];
+		});
 		break;
 }
 
