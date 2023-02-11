@@ -11,6 +11,7 @@
  */
 import { AppRegistry } from "react-native";
 import App from "./App";
+import Userlist from './UserlistComponent';
 
 AppRegistry.registerComponent("ReactNativeProject", () => App);
 AppRegistry.runApplication("ReactNativeProject", { rootTag: document.getElementById("react-app") });

@@ -4,16 +4,26 @@
  * Entry point for the React Native application
  *
  * @author Allan DeBoe
- * @date February 7th, 2023
+ * @date February 10th, 2023
  */
 
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import axios from 'axios';
 
 // The React native app uses CSS modules to stylize
 // components to make it easier to integrate 
+//
+// NOTE: Stylizing does not work at the moment, especially for
+// web, so keep that in mind. Feel free to utilize standard methods
+// of stylizing components, ideally having a "styles.js" file that
+// contains just the styling.
 import style from './App.module.css';
 
+
+import Userlist from './UserlistComponent';
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 let styles = {};
 switch (style.constructor.name) {
 	
@@ -35,10 +45,12 @@ switch (style.constructor.name) {
 		break;
 }
 
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 export default function App() {
 	return (
 		<View style={styles.container}>
-			<Text style={styles.text}>Open up App.js to start working on your app!</Text>
+			<Text style={styles.text}>SER402 React Native Prototype</Text>
+			<Userlist/>
 		</View>
 	);
 }
