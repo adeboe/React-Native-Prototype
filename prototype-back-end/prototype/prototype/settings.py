@@ -4,7 +4,7 @@
 # This handles the settings of the Django back-end
 # 
 # @author   Allan DeBoe
-# @date     January 17th, 2023
+# @date     February 13th, 2023
 #
 ###############################################################################
 
@@ -150,3 +150,7 @@ REST_FRAMEWORK = {
 
 # Loosens restrictions on Cross-Origin Resource Sharing.
 CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:19006',
+)

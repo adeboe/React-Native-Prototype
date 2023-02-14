@@ -5,11 +5,11 @@
  * displays users stored in the database
  *
  * @author Allan DeBoe
- * @date February 10th, 2023
+ * @date February 13th, 2023
  */
  
 import React from 'react';
-import { ListView, Text } from 'react-native';
+import { FlatList, Text } from 'react-native';
 import axios from 'axios';
 
 // The React native app uses CSS modules to stylize
@@ -19,7 +19,7 @@ import axios from 'axios';
 // web, so keep that in mind. Feel free to utilize standard methods
 // of stylizing components, ideally having a "styles.js" file that
 // contains just the styling.
-import style from './App.module.css';
+import style from '../App.module.css';
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 let styles = {};
@@ -59,7 +59,7 @@ export default class UserList extends React.Component {
 		// Get Users
 		users = [];
 		
-		const dSource = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+		//const dSource = new FlatList.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 		
 		// Expecting a List/Array of users
 		//
@@ -87,17 +87,17 @@ export default class UserList extends React.Component {
 				}
 		
 				this.state = {
-					dataSource: dSource.cloneWithRows(usernames)
+					dataSource: usernames
 				}
 			});
 	}
 	
 	render() {
 		return (
-			<ListView
-				dataSource = {this.state.dataSource}
-				renderRow = {
-					(rowData) => <Text style={styles.text}>{rowData}</Text>
+			<FlatList
+				data = {this.state.dataSource}
+				renderItem = {
+					(item) => <Text style={styles.text}>{item}</Text>
 				}
 			/>
 		);
