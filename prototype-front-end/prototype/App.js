@@ -4,12 +4,11 @@
  * Entry point for the React Native application
  *
  * @author Allan DeBoe
- * @date February 13th, 2023
+ * @date February 16th, 2023
  */
 
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import axios from 'axios';
 import Userlist from './components/Userlist';
 
 // The React native app uses CSS modules to stylize

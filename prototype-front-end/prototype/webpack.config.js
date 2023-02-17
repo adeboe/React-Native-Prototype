@@ -7,7 +7,7 @@
  * https://github.com/kristerkari/react-native-css-modules/blob/master/docs/web-compatibility.md
  *
  * @author Allan DeBoe
- * @date February 13th, 2023
+ * @date February 16th, 2023
  */
 const webpack = require("webpack");
 const htmlWebpackPlugin = require('html-webpack-plugin'); // FINALLY!!!!
@@ -15,7 +15,7 @@ const path = require("path");
 
 module.exports = {
 	mode: "development",
-    entry: ["react-hot-loader/patch", "./index.web.js"],
+    entry: ["./index.web.js"],
     plugins: [
 		new htmlWebpackPlugin({ template: './index.html' }),
         new webpack.HotModuleReplacementPlugin(),
@@ -24,8 +24,8 @@ module.exports = {
 		moduleIds: 'named'
 	},
 	output: {
-		path: path.resolve(__dirname, 'dist'),
-		filename: "./index.web.js",
+		path: path.resolve(__dirname, 'app/assets/js'),
+		filename: "index.web.js",
 		publicPath: '/'
 	},
 	devServer: {
@@ -49,7 +49,6 @@ module.exports = {
 							"module:metro-react-native-babel-preset",
 						],
 						plugins: [
-							"react-hot-loader/babel",
 							['@babel/plugin-proposal-private-property-in-object', { loose: true }],
 							['@babel/plugin-proposal-private-methods', { loose: true }],
 						],

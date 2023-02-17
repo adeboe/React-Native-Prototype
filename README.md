@@ -16,14 +16,8 @@ After that, download the repo.
 Then, under `[PROJECT DIR]/prototype-front-end/prototype` run the following commands to ensure everything is in there:
 
 ```
-> yarn add babel-plugin-react-native-classname-to-style babel-plugin-react-native-platform-specific-extensions react-native-css-transformer react-native-paper react-native-cli --dev
-> yarn add babel-loader babel-core@7.0.0-bridge.0 @babel/preset-env babel-preset-react@7.0.0-beta.3 webpack webpack-cli css-loader react-hot-loader style-loader webpack-dev-server --dev
-> yarn add react-art react-dom react-router-native react-router-dom react-native-web@npm:@gravitylabs/react-native-web --save
-> yarn add events node-polyfill-webpack-plugin axios
+> npm install
 ```
-
-### Note
-The project `@gravitylabs/react-native-web` is used instead of the official `react-native-web` is because `react-native-web` removed the ability to stylize components using class names (which is needed for the *React Native CSS Modules* to work as intended when it comes to the web version). You can see the project on https://github.com/0xGravityLabs/react-native-web
 
 ## How to Run (Windows 10)
 
