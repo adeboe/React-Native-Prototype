@@ -1,106 +1,78 @@
 /**
- * "UserlistComponent.js"
+ * "Userlist.js"
  *
- * Contains the "Userlist" component, which
- * displays users stored in the database
+ * Displays the users from the database in a more
+ * visually appealing way; used to test connections
+ * between the Django back-end and React native
+ * front-end.
  *
  * @author Allan DeBoe
- * @date February 13th, 2023
+ * @date February 17th, 2023
  */
- 
+
 import React from 'react';
-import { FlatList, Text } from 'react-native';
+import { StyleSheet, TouchableOpacity, Text, View } from 'react-native';
 import axios from 'axios';
 
-// The React native app uses CSS modules to stylize
-// components to make it easier to integrate 
-//
-// NOTE: Stylizing does not work at the moment, especially for
-// web, so keep that in mind. Feel free to utilize standard methods
-// of stylizing components, ideally having a "styles.js" file that
-// contains just the styling.
-import style from '../App.module.css';
+import styles from '../styles';
 
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-let styles = {};
-switch (style.constructor.name) {
-	
-	case 'CSS2Properties':
-		Object.values(style).forEach((property) => {
-			styles[property] = style[property];
-		});
-		break;
-	
-	case 'CSSStyleDeclaration':
-		styles = style;
-		break;
-	
-	default:
-		console.error(`oopsee!: ${JSON.stringify(style)}`);
-		Object.values(style).forEach((property) => {
-			styles[property] = style[property];
-		});
-		break;
-}
-
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// Axios will not work on mobile due to the fact it will require a
-// publicly available REST API domain to work.
-
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// Contains Userlist Component
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Component Class
 
 export default class UserList extends React.Component {
 	
 	constructor(props) {
-		
 		super(props);
-
-		// Get Users
+		
+		// use axios to communicate with Django
+		// back-end to get data
+		
 		users = [];
-		
-		//const dSource = new FlatList.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-		
-		// Expecting a List/Array of users
-		//
-		// For this prototype, each user in this array has three parts
-		// > username
-		// > account_creation_date
-		// > profile_description
-		axios.get("http://localhost:8000/users/")
-			.then(function (response) {
-				if (response.json().status == "200") {
-					users = response.json();
-				}
+		errorJson = {};
+		state = {};
+		axios.get('http://127.0.0.1:8000/users')
+			.then(function(response) {
+				users = response.data;
 			})
-			.catch(function (error) {
-				// Ignore Error (for now)
+			.catch(function(error) {
+				errorJson = error;
 			})
 			.finally(function() {
-			
-				// Get the list of usernames
-				usernames = []
-				if (users.length > 0) {
-					for (let index in users) {
-						usernames.push({username: users[index].username});
-					}
-				}
-		
-				this.state = {
-					dataSource: usernames
+				state = {
+					data: users,
+					error: errorJson,
 				}
 			});
+			
 	}
 	
-	render() {
+	displayList() {
 		return (
-			<FlatList
-				data = {this.state.dataSource}
-				renderItem = {
-					(item) => <Text style={styles.text}>{item}</Text>
+			<View>
+				{
+					this.state.data.map((item) => (
+						<TouchableOpacity onPress = {() => alert(item.username)}>
+							<Text style={styles.text}>{item.username}</Text>
+						</TouchableOpacity>
+					))
 				}
-			/>
+			</View>
 		);
+	}
+
+	displayError() {
+		return (
+			<View>
+				<Text style={styles.text}>{this.state.error}</Text>
+			</View>
+		)
+	}
+
+	render() {
+		if (this.state.error != {}) {
+			return this.displayError();
+		}
+		return this.displayList();
 	}
 	
 }

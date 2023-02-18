@@ -1,15 +1,11 @@
 {
-	"expo": {
-		"name": "prototype",
-		"slug": "prototype",
-		"version": "1.0.0",
-		"assetBundlePatterns": [
-			"**/*"
-		],
-		"packagerOpts": {
-			"config": "metro.config.js",
-			"sourceExts": ["js", "jsx", "css"]
-		}
-	},
-	"name": "prototype"
+  "expo": {
+    "name": "prototype",
+    "slug": "prototype",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "prototype"
 }
