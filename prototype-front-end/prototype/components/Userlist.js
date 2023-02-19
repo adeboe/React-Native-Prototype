@@ -7,11 +7,11 @@
  * front-end.
  *
  * @author Allan DeBoe
- * @date February 17th, 2023
+ * @date February 18th, 2023
  */
 
 import React from 'react';
-import { StyleSheet, TouchableOpacity, Text, View } from 'react-native';
+import { TouchableOpacity, Text, View } from 'react-native';
 import axios from 'axios';
 
 import styles from '../styles';
@@ -26,53 +26,37 @@ export default class UserList extends React.Component {
 		
 		// use axios to communicate with Django
 		// back-end to get data
-		
-		users = [];
-		errorJson = {};
-		state = {};
-		axios.get('http://127.0.0.1:8000/users')
-			.then(function(response) {
-				users = response.data;
+		this.state = {
+			data: [],
+		};
+		axios.get('http://127.0.0.1:8000/users/')
+			.then((response) => {
+				this.setState({ data: response.data });
 			})
-			.catch(function(error) {
-				errorJson = error;
-			})
-			.finally(function() {
-				state = {
-					data: users,
-					error: errorJson,
-				}
+			.catch((error) => {
+				console.error(error);
 			});
-			
 	}
-	
-	displayList() {
+
+	render() {
+		if (this.state.data.length > 0) {
+			return (
+				<View>
+					{
+						this.state.data.map((item) => (
+							<TouchableOpacity onPress = {(item) => alert(item.username)}>
+								<Text style={styles.text}>{item.username}</Text>
+							</TouchableOpacity>
+						))
+					}
+				</View>
+			);
+		}
 		return (
 			<View>
-				{
-					this.state.data.map((item) => (
-						<TouchableOpacity onPress = {() => alert(item.username)}>
-							<Text style={styles.text}>{item.username}</Text>
-						</TouchableOpacity>
-					))
-				}
+				<Text style={styles.text}>Sorry, there's nothing to see here</Text>
 			</View>
 		);
 	}
 
-	displayError() {
-		return (
-			<View>
-				<Text style={styles.text}>{this.state.error}</Text>
-			</View>
-		)
-	}
-
-	render() {
-		if (this.state.error != {}) {
-			return this.displayError();
-		}
-		return this.displayList();
-	}
-	
 }
